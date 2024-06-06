@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.header-bg{
+    background-image: url(https://img.freepik.com/free-vector/gradient-white-monochrome-background_23-2148996240.jpg?t=st=1717589171~exp=1717592771~hmac=7da99b28f5dec0a8fc922cb861235cef094871ab2d423cc1e044872dcc5ab5d7&w=900);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
