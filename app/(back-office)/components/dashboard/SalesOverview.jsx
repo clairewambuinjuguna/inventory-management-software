@@ -54,7 +54,7 @@ export default function SalesOverview() {
         <div className="pr-8  grid grid-cols-4 gap-4">
           {/*card */}
           {salesActivity.map((item, i) => (
-           <SalesActivityCard item={item} key={i}/>
+            <SalesActivityCard item={item} key={i} />
           ))}
         </div>
       </div>
@@ -63,7 +63,7 @@ export default function SalesOverview() {
         <h2 className="mb-6 text-xl">Inventory Summary</h2>
         <div className="">
           {inventorySummary.map((item, i) => (
-            <InventorySummaryCard item={item} key={i}/>
+            <InventorySummaryCard item={item} key={i} />
           ))}
         </div>
       </div>

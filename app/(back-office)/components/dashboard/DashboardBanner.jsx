@@ -1,9 +1,9 @@
-"use client"
-import { CreditCard, X } from 'lucide-react'
-import React, { useState } from 'react'
+"use client";
+import { CreditCard, X } from "lucide-react";
+import React, { useState } from "react";
 
 export default function DashboardBanner() {
-    const[hidden,setHidden]=useState(false)
+  const [hidden, setHidden] = useState(false);
   return (
     <div
       className={`${
@@ -33,8 +33,11 @@ export default function DashboardBanner() {
       </div>
 
       {/*close button */}
-      <button onClick={()=>setHidden(true)} className="absolute top-4 right-16">
-        <X className='text-slate-600 '/>
+      <button
+        onClick={() => setHidden(true)}
+        className="absolute top-4 right-16"
+      >
+        <X className="text-slate-600 " />
       </button>
     </div>
   );

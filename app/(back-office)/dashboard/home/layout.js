@@ -1,11 +1,11 @@
-import React from 'react'
-import HomeNav from '../../components/HomeNav'
+import React from "react";
+import HomeNav from "../../components/HomeNav";
 
-export default function layout({children}) {
+export default function layout({ children }) {
   return (
-    <div className=''>
-        <HomeNav/>
+    <div className="">
+      <HomeNav />
       {children}
     </div>
-  )
+  );
 }

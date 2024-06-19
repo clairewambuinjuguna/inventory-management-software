@@ -35,7 +35,8 @@ export default function Inventory() {
 
     {
       title: "Price Lists",
-      description: "Tweak your item prices for specific contacts or transactions.",
+      description:
+        "Tweak your item prices for specific contacts or transactions.",
       link: "/new",
       linkTitle: "New Item",
       enabled: false,
@@ -44,7 +45,7 @@ export default function Inventory() {
   ];
   return (
     <div>
-      <FixedHeader newLink="/dashboard/inventory/items/new"/>
+      <FixedHeader newLink="/dashboard/inventory/items/new" />
       <div className="grid grid-cols-1 lg:grid-cols-2 m-4 gap-6 ">
         {optionsCard.map((card, i) => (
           <OptionCard key={i} optionData={card} />

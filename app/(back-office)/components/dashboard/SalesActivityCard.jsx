@@ -1,8 +1,8 @@
-import React from 'react'
-import Link from 'next/link';
-import { CheckCircle2 } from 'lucide-react';
+import React from "react";
+import Link from "next/link";
+import { CheckCircle2 } from "lucide-react";
 
-export default function SalesActivityCard({item}) {
+export default function SalesActivityCard({ item }) {
   return (
     <div>
       <Link

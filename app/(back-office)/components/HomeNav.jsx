@@ -1,12 +1,12 @@
-"use client"
+"use client";
 import { Building2 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 
 export default function HomeNav() {
-    const pathname=usePathname()
-    console.log(pathname)
+  const pathname = usePathname();
+  console.log(pathname);
   const NavLinks = [
     {
       title: "Dashboard",
@@ -44,7 +44,11 @@ export default function HomeNav() {
             <Link
               key={item.title}
               href={item.href}
-              className={`${pathname===item.href?"py-3 border-b-2 border-blue-600":"py-1"}`}
+              className={`${
+                pathname === item.href
+                  ? "py-3 border-b-2 border-blue-600"
+                  : "py-1"
+              }`}
             >
               {item.title}
             </Link>

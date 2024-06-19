@@ -7,7 +7,7 @@ import {
   Plus,
 } from "lucide-react";
 import Link from "next/link";
-export default function FixedHeader({newLink}) {
+export default function FixedHeader({ newLink }) {
   return (
     <div className="flex justify-between items-center bg-white py-5 px-4 ">
       {/*New */}

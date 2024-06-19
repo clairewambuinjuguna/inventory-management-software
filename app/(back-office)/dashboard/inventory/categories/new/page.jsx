@@ -28,7 +28,12 @@ export default function NewCategory() {
         className="w-full max-w-4xl p-4 my-3 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 mx-auto"
       >
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
-       <TextInput/>
+          <TextInput
+            label="Category Title"
+            name="title"
+            register={register}
+            errors={errors}
+          />
         </div>
         <div className="py-4 mt-6 sm:col-span-1">
           <button
@@ -37,7 +42,7 @@ export default function NewCategory() {
           >
             Save
           </button>
-          <div class="text-sm font-medium text-gray-500 dark:text-gray-300"></div>
+          <div className="text-sm font-medium text-gray-500 dark:text-gray-300"></div>
         </div>
       </form>
     </div>

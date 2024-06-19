@@ -1,9 +1,16 @@
-"use client"
+"use client";
 import React from "react";
 import Link from "next/link";
 
 export default function OptionCard({ optionData }) {
-  const { title, description, link, linkTitle, enabled ,icon:Icon } = optionData;
+  const {
+    title,
+    description,
+    link,
+    linkTitle,
+    enabled,
+    icon: Icon,
+  } = optionData;
   return (
     <div>
       <div className="shadow-md bg-white flex flex-col items-center justify-center gap-6 py-8 px-16 rounded-sm">

@@ -12,8 +12,12 @@ export default function SubscriptionCard() {
           </p>
         </div>
         <div className="flex  text-sm">
-          <button className="mr-2 border-r border-slate-600 p-1">Change Plan</button>
-          <Link className="p-1" href="#">Upgrade</Link>
+          <button className="mr-2 border-r border-slate-600 p-1">
+            Change Plan
+          </button>
+          <Link className="p-1" href="#">
+            Upgrade
+          </Link>
         </div>
       </div>
     </div>
