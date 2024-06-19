@@ -18,10 +18,27 @@ export default function NewCategory() {
   } = useForm();
   const [loading, setLoading] = useState(false);
 
-  function onSubmit(data) {
-    reset();
-    // setLoading(true);
+  async function onSubmit(data) {
     console.log(data);
+    setLoading(true);
+    const baseUrl = "http://localhost:3000";
+    try {
+      const response = await fetch(`${baseUrl}/api/categories`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      if (response.ok) {
+        console.log(response);
+        reset();
+        setLoading(false);
+      }
+    } catch (error) {
+      setLoading(false); //if there are errors,set loading to false
+      console.log(error);
+    }
   }
 
   return (
@@ -43,7 +60,7 @@ export default function NewCategory() {
           <div className="sm:col-span-2">
             <TextareaInput
               label="Category Description"
-              name="Category"
+              name="description"
               register={register}
               errors={errors}
             />
