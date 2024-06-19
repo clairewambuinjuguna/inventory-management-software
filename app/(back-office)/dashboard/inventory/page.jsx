@@ -19,15 +19,15 @@ export default function Inventory() {
       title: "Items",
       description:
         "Create standalone items and services that you buy and sell.",
-      link: "/new",
+      link: "/dashboard/inventory/items/new",
       linkTitle: "New Item",
       enabled: true,
       icon: Shirt,
     },
     {
-      title: "Composite Items",
+      title: "Categories",
       description: "Bundle different items together and sell them as kits.",
-      link: "/new",
+      link: "/dashboard/inventory/categories/new",
       linkTitle: "New Composite Item",
       enabled: false,
       icon: Component,
