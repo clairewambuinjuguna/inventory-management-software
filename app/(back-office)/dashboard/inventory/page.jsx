@@ -34,12 +34,30 @@ export default function Inventory() {
     },
 
     {
-      title: "Price Lists",
+      title: "Brands",
       description:
         "Tweak your item prices for specific contacts or transactions.",
-      link: "/new",
+      link: "/dashboard/inventory/brands/new",
       linkTitle: "New Item",
-      enabled: false,
+      enabled: true,
+      icon: ScrollText,
+    },
+    {
+      title: "Warehouse",
+      description:
+        "Tweak your item prices for specific contacts or transactions.",
+      link: "/dashboard/inventory/warehouse/new",
+      linkTitle: "New Item",
+      enabled: true,
+      icon: ScrollText,
+    },
+    {
+      title: "Units",
+      description:
+        "Tweak your item prices for specific contacts or transactions.",
+      link: "/dashboard/inventory/units/new",
+      linkTitle: "New Unit",
+      enabled: true,
       icon: ScrollText,
     },
   ];
