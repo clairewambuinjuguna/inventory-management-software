@@ -58,15 +58,15 @@ export default function NewUnit() {
             errors={errors}
             className="w-full"
           />
-          <div className="sm:col-span-2">
-            <TextInput
-              label="Unit Abbreviation"
-              name="abbreviation"
-              register={register}
-              errors={errors}
-              className="w-full"
-            />
-          </div>
+          <TextInput
+            label="Abbreviation Title"
+            name="title"
+            register={register}
+            errors={errors}
+            className="w-full"
+          />
+
+     
         </div>
         <Submitbutton isLoading={loading} title="Unit" />
       </form>

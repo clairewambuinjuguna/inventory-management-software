@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Units() {
+export default function Brands() {
   return (
     <div>
       <h2>Units</h2>
