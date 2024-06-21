@@ -7,15 +7,6 @@ import OptionCard from "../../components/dashboard/OptionCard";
 export default function Inventory() {
   const optionsCard = [
     {
-      title: "Item Groups",
-      description:
-        "Create multiple variants of the same item using Item Groups.",
-      link: "/new",
-      linkTitle: "New Item Group",
-      enabled: true,
-      icon: Boxes,
-    },
-    {
       title: "Items",
       description:
         "Create standalone items and services that you buy and sell.",
@@ -29,8 +20,8 @@ export default function Inventory() {
       description: "Bundle different items together and sell them as kits.",
       link: "/dashboard/inventory/categories/new",
       linkTitle: "New Composite Item",
-      enabled: false,
-      icon: Component,
+      enabled: true,
+      icon: Boxes,
     },
 
     {
@@ -58,7 +49,7 @@ export default function Inventory() {
       link: "/dashboard/inventory/units/new",
       linkTitle: "New Unit",
       enabled: true,
-      icon: ScrollText,
+      icon: Component,
     },
   ];
   return (
