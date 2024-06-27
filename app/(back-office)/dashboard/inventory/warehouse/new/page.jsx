@@ -9,7 +9,19 @@ import { useState } from "react";
 
 import Submitbutton from "@/app/(back-office)/components/Forminputs/Submitbutton";
 import TextareaInput from "@/app/(back-office)/components/Forminputs/Textareainput";
+import Multipleselect from "@/app/(back-office)/components/Forminputs/SelectInput";
+import SelectInput from "@/app/(back-office)/components/Forminputs/SelectInput";
 export default function NewWarehouse() {
+  const selectOptions = [
+    {
+      label: "Main",
+      value: "main",
+    },
+    {
+      label: "Branch",
+      value: "branch",
+    },
+  ];
   const {
     register,
     handleSubmit,
@@ -51,6 +63,13 @@ export default function NewWarehouse() {
         className="w-full max-w-4xl p-4 my-3 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 mx-auto"
       >
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
+          <SelectInput
+            register={register}
+            className="w-full"
+            name="type"
+            label="Select the warehouse type"
+            options={selectOptions}
+          />
           <TextInput
             label="Warehouse Title"
             name="title"
@@ -63,7 +82,7 @@ export default function NewWarehouse() {
             name="Location"
             register={register}
             errors={errors}
-            className="w-full"
+            
           />
           <div className="sm:col-span-2">
             <TextareaInput
