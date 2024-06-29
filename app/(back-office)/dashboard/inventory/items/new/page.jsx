@@ -1,7 +1,7 @@
 "use client";
 import TextInput from "@/app/(back-office)/components/Forminputs/TextInput";
 import FormHeader from "@/app/(back-office)/components/dashboard/FormHeader";
-import { X } from "lucide-react";
+import { Pencil, X } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -11,7 +11,13 @@ import Submitbutton from "@/app/(back-office)/components/Forminputs/Submitbutton
 import TextareaInput from "@/app/(back-office)/components/Forminputs/Textareainput";
 import Multipleselect from "@/app/(back-office)/components/Forminputs/SelectInput";
 import SelectInput from "@/app/(back-office)/components/Forminputs/SelectInput";
+import { UploadButton } from "@/lib/uploadthing";
+import { UploadDropzone } from "@uploadthing/react";
+import Image from "next/image";
+import ImageInput from "@/app/(back-office)/components/Forminputs/ImageInput";
 export default function NewItem() {
+  const [imageUrl, setImageUrl] = useState("");
+
   const categories = [
     {
       label: "Electronics",
@@ -56,6 +62,20 @@ export default function NewItem() {
       value: "qwertyuisdfgsdfg",
     },
   ];
+  const suppliers = [
+    {
+      label: "Supplier A",
+      value: "ertyujsdfg",
+    },
+    {
+      label: "Supplier B",
+      value: "qwertyuisdfgsdfg",
+    },
+    {
+      label: "Warehouse C",
+      value: "qwertyuisdfgsdfg",
+    },
+  ];
   const {
     register,
     handleSubmit,
@@ -65,6 +85,7 @@ export default function NewItem() {
   const [loading, setLoading] = useState(false);
 
   async function onSubmit(data) {
+    data.imageUrl = imageUrl;
     console.log(data);
     setLoading(true);
     const baseUrl = "http://localhost:3000";
@@ -163,6 +184,13 @@ export default function NewItem() {
             className="w-full"
             type="number"
           />
+          <SelectInput
+            register={register}
+            className="w-full"
+            name="supplierId"
+            label="Select the item Supplier"
+            options={suppliers}
+          />
           <TextInput
             label="Re-order Point"
             name="reOrderPoint"
@@ -171,7 +199,7 @@ export default function NewItem() {
             className="w-full"
             type="number"
           />
-     
+
           <SelectInput
             register={register}
             className="w-full"
@@ -195,7 +223,7 @@ export default function NewItem() {
             className="w-full"
           />
           <TextInput
-            label="Item tax Ratein %"
+            label="Item tax Rate in %"
             name="taxRate"
             type="number"
             register={register}
@@ -214,6 +242,56 @@ export default function NewItem() {
             name="notes"
             register={register}
             errors={errors}
+          />
+          {/* <div className="col-span-full">
+            <div className="flex justify-between items-center mb-4">
+              <label
+                htmlFor="course-image"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Item Image
+              </label>
+              {imageUrl && (
+                <button
+                  onClick={() => setImageUrl("")} //to remove the current image by setting the imageUrl to empty
+                  type="button"
+                  className="flex space-x-2  bg-slate-900 rounded-md shadow text-slate-50  py-2 px-4"
+                >
+                  <Pencil className="w-5 h-5" />
+                  <span>Change Image</span>
+                </button>
+              )}
+            </div>
+            {imageUrl ? (
+              <Image   //if there is an image,get the image url and display it
+                src={imageUrl}
+                alt="Item image"
+                width={1000}
+                height={667}
+                className="w-full h-64 object-cover"
+              />
+            ) : (
+              <UploadDropzone
+                endpoint="imageUploader" //if the image is not there,display the dropzone
+                onClientUploadComplete={(res) => {
+                  setImageUrl(res[0].url);
+                  // Do something with the response
+                  console.log("Files: ", res);
+                  alert("Upload Completed");
+                }}
+                onUploadError={(error) => {
+                  // Do something with the error.
+                  alert(`ERROR! ${error.message}`);
+                }}
+              />
+            )}
+          </div> */}
+          <ImageInput
+            label="Item Image"
+            imageUrl={imageUrl}
+            setImageUrl={setImageUrl}
+            endpoint="imageUploader"
+            
           />
         </div>
         <Submitbutton isLoading={loading} title="Item" />
