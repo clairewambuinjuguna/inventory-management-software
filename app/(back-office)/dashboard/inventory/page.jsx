@@ -51,6 +51,15 @@ export default function Inventory() {
       enabled: true,
       icon: Component,
     },
+    {
+      title: "Inventory Adjustment",
+      description:
+        "Transfer stock from the Main Warehouse",
+      link: "/dashboard/inventory/adjustments/new",
+      linkTitle: "New Adjustment",
+      enabled: true,
+      icon: Component,
+    },
   ];
   return (
     <div>
