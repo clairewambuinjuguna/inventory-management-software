@@ -1,8 +1,15 @@
 "use client";
 import React from "react";
 import FixedHeader from "../../components/dashboard/FixedHeader";
-import { Boxes, Component, ScrollText, Shirt } from "lucide-react";
-import Link from "next/link";
+import {
+  Edit,
+  LayoutGrid,
+  LayoutPanelTop,
+  Scale,
+  Tag,
+  Warehouse,
+} from "lucide-react";
+
 import OptionCard from "../../components/dashboard/OptionCard";
 export default function Inventory() {
   const optionsCard = [
@@ -13,7 +20,7 @@ export default function Inventory() {
       link: "/dashboard/inventory/items/new",
       linkTitle: "New Item",
       enabled: true,
-      icon: Shirt,
+      icon: LayoutGrid,
     },
     {
       title: "Categories",
@@ -21,7 +28,7 @@ export default function Inventory() {
       link: "/dashboard/inventory/categories/new",
       linkTitle: "New Composite Item",
       enabled: true,
-      icon: Boxes,
+      icon: LayoutPanelTop,
     },
 
     {
@@ -31,7 +38,7 @@ export default function Inventory() {
       link: "/dashboard/inventory/brands/new",
       linkTitle: "New Item",
       enabled: true,
-      icon: ScrollText,
+      icon: Tag,
     },
     {
       title: "Warehouse",
@@ -40,7 +47,7 @@ export default function Inventory() {
       link: "/dashboard/inventory/warehouse/new",
       linkTitle: "New Item",
       enabled: true,
-      icon: ScrollText,
+      icon: Warehouse,
     },
     {
       title: "Units",
@@ -49,13 +56,21 @@ export default function Inventory() {
       link: "/dashboard/inventory/units/new",
       linkTitle: "New Unit",
       enabled: true,
-      icon: Component,
+      icon: Scale,
+    },
+    {
+      title: "Inventory Adjustment",
+      description: "Transfer stock from the Main Warehouse",
+      link: "/dashboard/inventory/adjustments/new",
+      linkTitle: "New Adjustment",
+      enabled: true,
+      icon: Edit,
     },
   ];
   return (
     <div>
       <FixedHeader newLink="/dashboard/inventory/items/new" />
-      <div className="grid grid-cols-1 lg:grid-cols-2 m-4 gap-6 ">
+      <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 m-4 gap-6 ">
         {optionsCard.map((card, i) => (
           <OptionCard key={i} optionData={card} />
         ))}

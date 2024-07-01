@@ -1,9 +1,15 @@
 import { NextResponse } from "next/server";
 export async function POST(request) {
   try {
-    const { transferStockQty, receivingBranchId, notes } = await request.json();
+    const { transferStockQty, givingWarehouseId, receivingWarehouseId, notes } =
+      await request.json();
 
-    const warehouse = { transferStockQty, receivingBranchId, notes };
+    const warehouse = {
+      transferStockQty,
+      givingWarehouseId,
+      receivingWarehouseId,
+      notes,
+    };
     console.log(warehouse);
     return NextResponse.json(warehouse);
   } catch (error) {
@@ -11,7 +17,7 @@ export async function POST(request) {
     return NextResponse.json(
       {
         error,
-        message: "Failed to make warehouse",
+        message: "Failed to create a brand",
       },
       { status: 500 }
     );
