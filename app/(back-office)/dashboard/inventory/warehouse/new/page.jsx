@@ -11,6 +11,7 @@ import Submitbutton from "@/app/(back-office)/components/Forminputs/Submitbutton
 import TextareaInput from "@/app/(back-office)/components/Forminputs/Textareainput";
 import Multipleselect from "@/app/(back-office)/components/Forminputs/SelectInput";
 import SelectInput from "@/app/(back-office)/components/Forminputs/SelectInput";
+import toast from "react-hot-toast";
 export default function NewWarehouse() {
   const selectOptions = [
     {
@@ -46,6 +47,7 @@ export default function NewWarehouse() {
         console.log(response);
         reset();
         setLoading(false);
+        toast.success("New Warehouse created successfully")
       }
     } catch (error) {
       setLoading(false); //if there are errors,set loading to false

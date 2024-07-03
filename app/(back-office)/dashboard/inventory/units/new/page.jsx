@@ -9,6 +9,7 @@ import { useState } from "react";
 
 import Submitbutton from "@/app/(back-office)/components/Forminputs/Submitbutton";
 import TextareaInput from "@/app/(back-office)/components/Forminputs/Textareainput";
+import toast from "react-hot-toast";
 export default function NewUnit() {
   const {
     register,
@@ -34,6 +35,7 @@ export default function NewUnit() {
         console.log(response);
         reset();
         setLoading(false);
+        toast.success("New Unit created successfully")
       }
     } catch (error) {
       setLoading(false); //if there are errors,set loading to false
@@ -60,13 +62,11 @@ export default function NewUnit() {
           />
           <TextInput
             label="Abbreviation Title"
-            name="title"
+            name="abbreviation"
             register={register}
             errors={errors}
             className="w-full"
           />
-
-     
         </div>
         <Submitbutton isLoading={loading} title="Unit" />
       </form>

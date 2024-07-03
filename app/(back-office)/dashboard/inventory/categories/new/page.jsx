@@ -32,7 +32,7 @@ export default function NewCategory() {
         body: JSON.stringify(data),
       });
       if (response.ok) {
-        console.log(response);
+        // console.log(response);
         reset();
         setLoading(false);
         toast.success("Category created successfully !");

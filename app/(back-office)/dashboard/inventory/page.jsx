@@ -2,6 +2,7 @@
 import React from "react";
 import FixedHeader from "../../components/dashboard/FixedHeader";
 import {
+  Component,
   Edit,
   LayoutGrid,
   LayoutPanelTop,
@@ -65,15 +66,6 @@ export default function Inventory() {
       linkTitle: "New Adjustment",
       enabled: true,
       icon: Edit,
-    },
-    {
-      title: "Inventory Adjustment",
-      description:
-        "Transfer stock from the Main Warehouse",
-      link: "/dashboard/inventory/adjustments/new",
-      linkTitle: "New Adjustment",
-      enabled: true,
-      icon: Component,
     },
   ];
   return (
