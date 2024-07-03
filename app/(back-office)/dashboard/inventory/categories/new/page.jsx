@@ -9,6 +9,7 @@ import { useState } from "react";
 
 import Submitbutton from "@/app/(back-office)/components/Forminputs/Submitbutton";
 import TextareaInput from "@/app/(back-office)/components/Forminputs/Textareainput";
+import toast from "react-hot-toast";
 export default function NewCategory() {
   const {
     register,
@@ -34,6 +35,7 @@ export default function NewCategory() {
         console.log(response);
         reset();
         setLoading(false);
+        toast.success("Category created successfully !");
       }
     } catch (error) {
       setLoading(false); //if there are errors,set loading to false
