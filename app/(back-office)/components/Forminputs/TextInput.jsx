@@ -10,6 +10,7 @@ export default function TextInput({
   isrequired = true,
   type = "text",
   className = "sm:col-span-2",
+  defaultValue=""
 }) {
   return (
     <div className={className}>
@@ -26,6 +27,7 @@ export default function TextInput({
           name={name}
           id={name}
           autoComplete={name}
+          defaultValue={defaultValue}
           className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-purple-600 focus:border-purple-600 sm:text-sm sm:leading-6"
           placeholder={`Type the ${label.toLowerCase()}`}
         />

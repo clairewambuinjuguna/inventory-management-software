@@ -63,6 +63,13 @@ export default function TransferInventoryForm() {
     >
       <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
         <TextInput
+          label="Reference Number"
+          name="referenceNumber"
+          register={register}
+          errors={errors}
+          type="number"
+        />
+        <TextInput
           label="Enter Quantity of stock to transfer"
           name="transferStockQty"
           register={register}
@@ -73,7 +80,7 @@ export default function TransferInventoryForm() {
         <SelectInput
           register={register}
           className="w-full"
-          name="givingWarehouseId"
+          name="warehouseId"
           label="Select the Warehouse to give the stock"
           options={branches}
         />

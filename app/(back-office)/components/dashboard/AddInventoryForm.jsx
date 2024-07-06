@@ -55,6 +55,14 @@ export default function AddInventoryForm() {
     >
       <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
         <TextInput
+          label="Reference Number"
+          name="referenceNumber"
+          register={register}
+          errors={errors}
+          type="number"
+        />
+
+        <TextInput
           label="Enter Quantity of stock to add"
           name="addStockQty"
           register={register}
@@ -65,7 +73,7 @@ export default function AddInventoryForm() {
         <SelectInput
           register={register}
           className="w-full"
-          name="receivingWarehouseId"
+          name="warehouseId"
           label="Select the Warehouse to receive the stock"
           options={branches}
         />
