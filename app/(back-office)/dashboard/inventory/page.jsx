@@ -8,6 +8,7 @@ import {
   LayoutPanelTop,
   Scale,
   Tag,
+  Truck,
   Warehouse,
 } from "lucide-react";
 
@@ -58,6 +59,15 @@ export default function Inventory() {
       linkTitle: "New Unit",
       enabled: true,
       icon: Scale,
+    },
+    {
+      title: "Suppliers",
+      description:
+        "Tweak your item prices for specific contacts or transactions.",
+      link: "/dashboard/inventory/supplier/new",
+      linkTitle: "New Supplier",
+      enabled: true,
+      icon: Truck,
     },
     {
       title: "Inventory Adjustment",

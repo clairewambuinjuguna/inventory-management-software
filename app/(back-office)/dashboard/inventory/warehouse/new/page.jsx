@@ -11,6 +11,7 @@ import Submitbutton from "@/app/(back-office)/components/Forminputs/Submitbutton
 import TextareaInput from "@/app/(back-office)/components/Forminputs/Textareainput";
 import Multipleselect from "@/app/(back-office)/components/Forminputs/SelectInput";
 import SelectInput from "@/app/(back-office)/components/Forminputs/SelectInput";
+import { makePostRequest } from "@/lib/apiRequest";
 import toast from "react-hot-toast";
 export default function NewWarehouse() {
   const selectOptions = [
@@ -33,28 +34,17 @@ export default function NewWarehouse() {
 
   async function onSubmit(data) {
     console.log(data);
-    setLoading(true);
-    const baseUrl = "http://localhost:3000";
-    try {
-      const response = await fetch(`${baseUrl}/api/warehouse`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-      if (response.ok) {
-        console.log(response);
-        reset();
-        setLoading(false);
-        toast.success("New Warehouse created successfully")
-      }
-    } catch (error) {
-      setLoading(false); //if there are errors,set loading to false
-      console.log(error);
-    }
+    
+    
+    makePostRequest(
+      setLoading,
+      "api/warehouse",
+      data,
+      "Warehouse",
+      reset
+    );
   }
-
+  
   return (
     <div>
       {/*header*/}
@@ -81,10 +71,9 @@ export default function NewWarehouse() {
           />
           <TextInput
             label="Warehouse Location"
-            name="Location"
+            name="location"
             register={register}
             errors={errors}
-            
           />
           <div className="sm:col-span-2">
             <TextareaInput

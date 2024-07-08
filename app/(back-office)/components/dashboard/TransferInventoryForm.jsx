@@ -6,6 +6,7 @@ import { useState } from "react";
 import Submitbutton from "@/app/(back-office)/components/Forminputs/Submitbutton";
 import TextareaInput from "@/app/(back-office)/components/Forminputs/Textareainput";
 import SelectInput from "@/app/(back-office)/components/Forminputs/SelectInput";
+import { makePostRequest } from "@/lib/apiRequest";
 export default function TransferInventoryForm() {
   const branches = [
     {
@@ -25,6 +26,20 @@ export default function TransferInventoryForm() {
       value: "werty",
     },
   ];
+  const items = [
+    {
+      label: "Item A",
+      value: "RTYU",
+    },
+    {
+      label: "Item B",
+      value: "werty",
+    },
+    {
+      label: "Item c",
+      value: "wghjh",
+    },
+  ];
   const {
     register,
     handleSubmit,
@@ -35,25 +50,13 @@ export default function TransferInventoryForm() {
 
   async function onSubmit(data) {
     console.log(data);
-    setLoading(true);
-    const baseUrl = "http://localhost:3000";
-    try {
-      const response = await fetch(`${baseUrl}/api/adjustments/transfer`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-      if (response.ok) {
-        console.log(response);
-        reset();
-        setLoading(false);
-      }
-    } catch (error) {
-      setLoading(false); //if there are errors,set loading to false
-      console.log(error);
-    }
+    makePostRequest(
+      setLoading,
+      "api/adjustments/transfer",
+      data,
+      "Stock Adjustment",
+      reset
+    );
   }
 
   return (
@@ -69,12 +72,20 @@ export default function TransferInventoryForm() {
           errors={errors}
           type="number"
         />
+        <SelectInput
+          register={register}
+          className="w-full"
+          name="itemId"
+          label="Select the Item"
+          options={items}
+        />
         <TextInput
           label="Enter Quantity of stock to transfer"
           name="transferStockQty"
           register={register}
           errors={errors}
           type="number"
+          className="w-full"
         />
 
         <SelectInput

@@ -15,6 +15,7 @@ import { UploadButton } from "@/lib/uploadthing";
 import { UploadDropzone } from "@uploadthing/react";
 import Image from "next/image";
 import ImageInput from "@/app/(back-office)/components/Forminputs/ImageInput";
+import { makePostRequest } from "@/lib/apiRequest";
 export default function NewItem() {
   const [imageUrl, setImageUrl] = useState("");
 
@@ -87,25 +88,7 @@ export default function NewItem() {
   async function onSubmit(data) {
     data.imageUrl = imageUrl;
     console.log(data);
-    setLoading(true);
-    const baseUrl = "http://localhost:3000";
-    try {
-      const response = await fetch(`${baseUrl}/api/items`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-      if (response.ok) {
-        console.log(response);
-        reset();
-        setLoading(false);
-      }
-    } catch (error) {
-      setLoading(false); //if there are errors,set loading to false
-      console.log(error);
-    }
+     makePostRequest(setLoading, "api/items", data, "Item", reset);
   }
 
   return (

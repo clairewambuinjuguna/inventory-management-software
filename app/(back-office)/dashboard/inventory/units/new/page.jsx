@@ -10,6 +10,7 @@ import { useState } from "react";
 import Submitbutton from "@/app/(back-office)/components/Forminputs/Submitbutton";
 import TextareaInput from "@/app/(back-office)/components/Forminputs/Textareainput";
 import toast from "react-hot-toast";
+import { makePostRequest } from "@/lib/apiRequest";
 export default function NewUnit() {
   const {
     register,
@@ -21,26 +22,15 @@ export default function NewUnit() {
 
   async function onSubmit(data) {
     console.log(data);
-    setLoading(true);
-    const baseUrl = "http://localhost:3000";
-    try {
-      const response = await fetch(`${baseUrl}/api/units`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-      if (response.ok) {
-        console.log(response);
-        reset();
-        setLoading(false);
-        toast.success("New Unit created successfully")
-      }
-    } catch (error) {
-      setLoading(false); //if there are errors,set loading to false
-      console.log(error);
-    }
+   
+    
+   makePostRequest(
+     setLoading,
+     "api/units",
+     data,
+     "Unit",
+     reset
+   );
   }
 
   return (
