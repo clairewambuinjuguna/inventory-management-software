@@ -11,11 +11,11 @@ export default function TransferInventoryForm() {
   const branches = [
     {
       label: "Main A",
-      value: "RTYU",
+      value: "rtyu",
     },
     {
       label: "Branch A",
-      value: "RTYU",
+      value: "tyui",
     },
     {
       label: "Main B",
@@ -91,7 +91,7 @@ export default function TransferInventoryForm() {
         <SelectInput
           register={register}
           className="w-full"
-          name="warehouseId"
+          name="givingWarehouseId"
           label="Select the Warehouse to give the stock"
           options={branches}
         />

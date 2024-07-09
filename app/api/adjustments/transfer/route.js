@@ -1,23 +1,34 @@
 import { NextResponse } from "next/server";
+import db from "@/lib/db";
 export async function POST(request) {
   try {
-    const { addStockQty, warehouseId, notes, referenceNumber } =
-      await request.json();
-
-    const warehouse = {
+    const {
       transferStockQty,
       givingWarehouseId,
-      receivingWarehouseId,
       notes,
-    };
-    console.log(warehouse);
-    return NextResponse.json(warehouse);
+      receivingWarehouseId,
+      referenceNumber,
+      itemId,
+    } = await request.json();
+
+    const adjustment = await db.transferStockAdjustment.create({
+      data: {
+        transferStockQty: parseInt(transferStockQty),
+        givingWarehouseId,
+        receivingWarehouseId,
+        notes,
+        referenceNumber,
+        itemId,
+      },
+    });
+    console.log(adjustment);
+    return NextResponse.json(adjustment);
   } catch (error) {
     console.log(error);
     return NextResponse.json(
       {
         error,
-        message: "Failed to create a brand",
+        message: "Failed to make adjustment",
       },
       { status: 500 }
     );

@@ -77,7 +77,7 @@ export default function AddInventoryForm() {
         <SelectInput
           register={register}
           className="w-full"
-          name="warehouseId"
+          name="receivingWarehouseId"
           label="Select the Warehouse to receive the stock"
           options={branches}
         />

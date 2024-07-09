@@ -68,18 +68,17 @@ model Warehouse {
   location                String?
   warehouseType           String
   description             String?
-  AddStockAdjustment      AddStockAdjustment[]
-  TransferStockAdjustment TransferStockAdjustment[]
+  
 }
 
 model AddStockAdjustment {
   id              String    @id @default(auto()) @map("_id") @db.ObjectId
   addStockQty     Int
   referenceNumber String
-  location        String?
-  description     String?
-  warehouse       Warehouse @relation(fields: [warehouseId], references: [id])
-  warehouseId     String    @db.ObjectId
+  notes        String?
+  
+  receivingWarehouseId String   
+  
   itemId          String    @db.ObjectId
 
   item Item @relation(fields: [itemId], references: [id])
@@ -89,12 +88,13 @@ model TransferStockAdjustment {
   id               String  @id @default(auto()) @map("_id") @db.ObjectId
   transferStockQty Int
   referenceNumber  String
-  description      String?
-  warehouseId      String  @db.ObjectId
+  notes             String?
+  givingWarehouseId      String  
+  receivingWarehouseId String   
   itemId           String  @db.ObjectId
 
   item      Item      @relation(fields: [itemId], references: [id])
-  warehouse Warehouse @relation(fields: [warehouseId], references: [id])
+  
 }
 
 model Supplier {
