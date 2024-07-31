@@ -17,7 +17,7 @@ model Item {
   id           String   @id @default(auto()) @map("_id") @db.ObjectId
   name         String
   description  String?
-  category     Category @relation(fields: [categoryId], references: [id])
+  category     Category @relation(fields: [categoryId], references: [id],onDelete:Cascade)
   categoryId   String   @db.ObjectId
   sku          String   @unique
   barcode      String?
@@ -40,6 +40,8 @@ model Item {
 
   TransferStockAdjustment TransferStockAdjustment[]
   AddStockAdjustment      AddStockAdjustment[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Category {
@@ -47,6 +49,8 @@ model Category {
   title       String
   description String?
   Item        Item[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Unit {
@@ -54,12 +58,16 @@ model Unit {
   title        String
   abbreviation String
   Item         Item[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Brand {
   id    String @id @default(auto()) @map("_id") @db.ObjectId
   title String
   Item  Item[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Warehouse {
@@ -68,6 +76,8 @@ model Warehouse {
   location                String?
   warehouseType           String
   description             String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
   
 }
 
@@ -82,6 +92,8 @@ model AddStockAdjustment {
   itemId          String    @db.ObjectId
 
   item Item @relation(fields: [itemId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model TransferStockAdjustment {
@@ -94,6 +106,8 @@ model TransferStockAdjustment {
   itemId           String  @db.ObjectId
 
   item      Item      @relation(fields: [itemId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
   
 }
 
@@ -109,4 +123,6 @@ model Supplier {
   taxID         String?
   notes         String?
   Item          Item[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
