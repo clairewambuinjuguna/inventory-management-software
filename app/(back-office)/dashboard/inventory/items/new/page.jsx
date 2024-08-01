@@ -10,6 +10,7 @@ export default async function NewItem() {
   const brands = await getData("brands");
   const warehouses = await getData("warehouse");
   const suppliers = await getData("suppliers");
+  console.log(suppliers);
 
   return (
     <div>

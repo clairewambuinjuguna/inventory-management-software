@@ -5,7 +5,7 @@ import db from "@/lib/db";
 export async function POST(request) {
   try {
     const {
-      name,
+      title,
       phone,
       email,
       address,
@@ -18,7 +18,7 @@ export async function POST(request) {
 
     const supplier = await db.supplier.create({
       data: {
-        name,
+        title,
         phone,
         email,
         address,
