@@ -4,13 +4,21 @@ import CreateItemForm from "@/app/(back-office)/components/dashboard/CreateItemF
 import { getData } from "@/lib/getData";
 
 export default async function NewItem() {
-  const categories = await getData("categories");
+  // sequential fetching =>use await
+  const categoriesData = getData("categories");
+  const unitsData = getData("units");
+  const brandsData = getData("brands");
+  const warehousesData = getData("warehouse");
+  const suppliersData = getData("suppliers");
 
-  const units = await getData("units");
-  const brands = await getData("brands");
-  const warehouses = await getData("warehouse");
-  const suppliers = await getData("suppliers");
-  console.log(suppliers);
+  //parallel Fetching=> faster
+  const [categories, units, brands, warehouses, suppliers] = await Promise.all([
+    categoriesData,
+    unitsData,
+    brandsData,
+    warehousesData,
+    suppliersData,
+  ]);
 
   return (
     <div>
