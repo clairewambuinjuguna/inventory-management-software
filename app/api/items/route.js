@@ -6,10 +6,6 @@ export async function POST(request) {
 
     console.log(itemData);
 
-    // const reOrderPoint = parseInt(itemData.reOrderPoint);
-    // if (isNaN(reOrderPoint)) {
-    //   throw new Error("Invalid reOrderPoint value");
-    // }
     const item = await db.item.create({
       data: {
         title: itemData.title,
@@ -41,6 +37,26 @@ export async function POST(request) {
         error: error.message,
         details: error.meta,
         message: "Failed to create the item",
+      },
+      { status: 500 }
+    );
+  }
+}
+
+export async function GET(request) {
+  try {
+    const items = await db.item.findMany({
+      orderBy: {
+        createdAt: "desc", //latest items
+      },
+    });
+    return NextResponse.json(items);
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json(
+      {
+        error,
+        message: "Failed to Fetch the Items ",
       },
       { status: 500 }
     );

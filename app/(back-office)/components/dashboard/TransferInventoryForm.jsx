@@ -7,39 +7,7 @@ import Submitbutton from "@/app/(back-office)/components/Forminputs/Submitbutton
 import TextareaInput from "@/app/(back-office)/components/Forminputs/Textareainput";
 import SelectInput from "@/app/(back-office)/components/Forminputs/SelectInput";
 import { makePostRequest } from "@/lib/apiRequest";
-export default function TransferInventoryForm() {
-  const branches = [
-    {
-      label: "Main A",
-      value: "rtyu",
-    },
-    {
-      label: "Branch A",
-      value: "tyui",
-    },
-    {
-      label: "Main B",
-      value: "werty",
-    },
-    {
-      label: "Branch B",
-      value: "werty",
-    },
-  ];
-  const items = [
-    {
-      label: "Item A",
-      value: "RTYU",
-    },
-    {
-      label: "Item B",
-      value: "werty",
-    },
-    {
-      label: "Item c",
-      value: "wghjh",
-    },
-  ];
+export default function TransferInventoryForm({ items, branches }) {
   const {
     register,
     handleSubmit,
@@ -70,7 +38,7 @@ export default function TransferInventoryForm() {
           name="referenceNumber"
           register={register}
           errors={errors}
-          type="number"
+          
         />
         <SelectInput
           register={register}

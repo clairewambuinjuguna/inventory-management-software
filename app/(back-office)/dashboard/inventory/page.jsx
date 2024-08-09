@@ -28,7 +28,7 @@ export default function Inventory() {
       title: "Categories",
       description: "Bundle different items together and sell them as kits.",
       link: "/dashboard/inventory/categories/new",
-      linkTitle: "New Composite Item",
+      linkTitle: "New Category",
       enabled: true,
       icon: LayoutPanelTop,
     },

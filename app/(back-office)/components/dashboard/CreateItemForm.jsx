@@ -38,6 +38,7 @@ export default function CreateItemForm({
     data.imageUrl = imageUrl;
     console.log(data);
     makePostRequest(setLoading, "api/items", data, "Item", reset);
+    setImageUrl("")
   }
 
   return (
@@ -47,7 +48,7 @@ export default function CreateItemForm({
     >
       <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
         <TextInput
-          label="Warehouse Title"
+          label="Item Title"
           name="title"
           register={register}
           errors={errors}

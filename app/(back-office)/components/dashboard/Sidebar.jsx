@@ -23,64 +23,79 @@ export default function Sidebar() {
     {
       title: "Items",
       href: "/dashboard/inventory",
+      href2: "/dashboard/inventory/items/new",
     },
     {
       title: "Categories",
       href: "/dashboard/inventory",
+      href2: "/dashboard/inventory/categories/new",
     },
     {
       title: "Brands",
       href: "/dashboard/inventory",
+      href2: "/dashboard/inventory/brands/new",
     },
     {
       title: "Units",
       href: "/dashboard/inventory",
+      href2: "/dashboard/inventory/units/new",
     },
     {
       title: "Warehouse",
       href: "/dashboard/inventory",
+      href2: "/dashboard/inventory/warehouse/new",
     },
     {
       title: "Inventory Adjustments",
       href: "/dashboard/inventory",
+      href2: "/dashboard/inventory/adjustments/new",
     },
     {
       title: "Supplier",
       href: "/dashboard/inventory",
+      href2: "/dashboard/inventory/supplier/new",
     },
   ];
   const SalesLinks = [
     {
       title: "Customers",
       href: "#",
+      href2: "/dashboard/inventory/items/new",
     },
     {
       title: "Sales Orders",
       href: "#",
+      href2: "/dashboard/inventory/items/new",
     },
     {
       title: "Shipments",
       href: "#",
+      href2: "/dashboard/inventory/items/new",
     },
     {
       title: "Invoices",
       href: "#",
+      href2: "/dashboard/inventory/items/new",
     },
     {
       title: "Sales Receipts",
       href: "#",
+      href2: "/dashboard/inventory/items/new",
     },
     {
       title: "Payment Received",
       href: "#",
+      href2: "/dashboard/inventory/items/new",
     },
     {
       title: "Sales Returns",
       href: "#",
+      href2: "/dashboard/inventory/items/new",
     },
     {
       title: "Credit Notes",
       href: "#",
+      href2: "/dashboard/inventory/items/new",
     },
   ];
   return (

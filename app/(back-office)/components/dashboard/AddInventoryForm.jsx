@@ -7,31 +7,7 @@ import Submitbutton from "@/app/(back-office)/components/Forminputs/Submitbutton
 import TextareaInput from "@/app/(back-office)/components/Forminputs/Textareainput";
 import SelectInput from "@/app/(back-office)/components/Forminputs/SelectInput";
 import { makePostRequest } from "@/lib/apiRequest";
-export default function AddInventoryForm() {
-  const branches = [
-    {
-      label: "Branch A",
-      value: "RTYU",
-    },
-    {
-      label: "Branch B",
-      value: "werty",
-    },
-  ];
-  const items  = [
-    {
-      label: "Item A",
-      value: "RTYU",
-    },
-    {
-      label: "Item B",
-      value: "werty",
-    },
-    {
-      label: "Item c",
-      value: "wghjh",
-    },
-  ];
+export default function AddInventoryForm({ items, branches }) {
   const {
     register,
     handleSubmit,
@@ -42,7 +18,13 @@ export default function AddInventoryForm() {
 
   async function onSubmit(data) {
     console.log(data);
-     makePostRequest(setLoading, "api/adjustments/add", data, "Stock Adjustment", reset);
+    makePostRequest(
+      setLoading,
+      "api/adjustments/add",
+      data,
+      "Stock Adjustment",
+      reset
+    );
   }
 
   return (
@@ -56,7 +38,6 @@ export default function AddInventoryForm() {
           name="referenceNumber"
           register={register}
           errors={errors}
-          type="number"
           className="w-full"
         />
         <SelectInput
