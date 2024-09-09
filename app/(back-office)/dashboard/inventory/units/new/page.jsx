@@ -22,21 +22,14 @@ export default function NewUnit() {
 
   async function onSubmit(data) {
     console.log(data);
-   
-    
-   makePostRequest(
-     setLoading,
-     "api/units",
-     data,
-     "Unit",
-     reset
-   );
+
+    makePostRequest(setLoading, "api/units", data, "Unit", reset);
   }
 
   return (
     <div>
       {/*header*/}
-      <FormHeader title="New Unit" href="/dashboard/inventory" />
+      <FormHeader title="New Unit" href="/dashboard/inventory/units" />
       {/*Form*/}
       <form
         onSubmit={handleSubmit(onSubmit)}

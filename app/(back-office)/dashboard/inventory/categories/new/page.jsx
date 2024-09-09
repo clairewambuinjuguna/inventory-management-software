@@ -28,7 +28,7 @@ export default function NewCategory() {
   return (
     <div>
       {/*header*/}
-      <FormHeader title="New Category" href="/dashboard/inventory" />
+      <FormHeader title="New Category" href="/dashboard/inventory/categories" />
       {/*Form*/}
       <form
         onSubmit={handleSubmit(onSubmit)}

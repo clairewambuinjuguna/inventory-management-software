@@ -22,13 +22,13 @@ export default function NewBrand() {
 
   async function onSubmit(data) {
     console.log(data);
-     makePostRequest(setLoading, "api/brands", data, "Brand", reset);
+    makePostRequest(setLoading, "api/brands", data, "Brand", reset);
   }
 
   return (
     <div>
       {/*header*/}
-      <FormHeader title="New Brand" href="/dashboard/inventory" />
+      <FormHeader title="New Brand" href="/dashboard/inventory/brands" />
       {/*Form*/}
       <form
         onSubmit={handleSubmit(onSubmit)}

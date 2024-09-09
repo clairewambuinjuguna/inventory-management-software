@@ -5,14 +5,15 @@ import React from "react";
 
 export default async function Suppliers() {
   const suppliers = await getData("suppliers");
-  const data = suppliers.map((obj) => {
-    return {
-      title: obj.title,
-      phone: obj.phone,
-      email: obj.email,
-    };
-  });
-  const columns = ["title", "phone","email",];
+  //   const data = suppliers.map((obj) => {
+  //     return {
+  //       title: obj.title,
+  //       phone: obj.phone,
+  //       email: obj.email,
+  //       contactPerson: obj.contactPerson,
+  //     };
+  //   });
+  const columns = ["title", "phone", "email"];
   return (
     <div>
       {/*header*/}
@@ -23,7 +24,7 @@ export default async function Suppliers() {
       {/*Form*/}
       {/* table */}
       <div className="my-4 p-8">
-        <DataTable data={data} columns={columns} />
+        <DataTable data={suppliers} columns={columns} />
       </div>
     </div>
   );

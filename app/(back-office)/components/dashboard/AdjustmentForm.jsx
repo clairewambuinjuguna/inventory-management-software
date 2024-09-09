@@ -26,7 +26,7 @@ export default function AdjustmentForm({items,branches}) {
   return (
     <div>
       {/*header*/}
-      <FormHeader title="New Adjustment" href="/dashboard/inventory" />
+      <FormHeader title="New Adjustment" href="/dashboard/inventory/adjustments" />
       {/*Form*/}
 
       <div className="border-b border-gray-200 dark:border-gray-700 w-full max-w-4xl px-4 py-2 my-4 bg-white border    mx-auto ">

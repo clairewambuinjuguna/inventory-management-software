@@ -49,6 +49,10 @@ export async function GET(request) {
       orderBy: {
         createdAt: "desc", //latest items
       },
+      include: {
+        category: true,
+        supplier:true,
+      },
     });
     return NextResponse.json(items);
   } catch (error) {

@@ -21,38 +21,43 @@ import SidebarDropdownLink from "./SidebarDropdownLink";
 export default function Sidebar() {
   const InventoryLinks = [
     {
-      title: "Items",
+      title: "All",
       href: "/dashboard/inventory",
+      href2: "/dashboard/inventory",
+    },
+    {
+      title: "Items",
+      href: "/dashboard/inventory/items",
       href2: "/dashboard/inventory/items/new",
     },
     {
       title: "Categories",
-      href: "/dashboard/inventory",
+      href: "/dashboard/inventory/categories",
       href2: "/dashboard/inventory/categories/new",
     },
     {
       title: "Brands",
-      href: "/dashboard/inventory",
+      href: "/dashboard/inventory/brands",
       href2: "/dashboard/inventory/brands/new",
     },
     {
       title: "Units",
-      href: "/dashboard/inventory",
+      href: "/dashboard/inventory/units",
       href2: "/dashboard/inventory/units/new",
     },
     {
       title: "Warehouse",
-      href: "/dashboard/inventory",
+      href: "/dashboard/inventory/warehouse",
       href2: "/dashboard/inventory/warehouse/new",
     },
     {
       title: "Inventory Adjustments",
-      href: "/dashboard/inventory",
+      href: "/dashboard/inventory/adjustments",
       href2: "/dashboard/inventory/adjustments/new",
     },
     {
       title: "Supplier",
-      href: "/dashboard/inventory",
+      href: "/dashboard/inventory/supplier",
       href2: "/dashboard/inventory/supplier/new",
     },
   ];
