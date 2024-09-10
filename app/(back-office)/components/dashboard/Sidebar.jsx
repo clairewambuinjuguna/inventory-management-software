@@ -104,7 +104,7 @@ export default function Sidebar() {
     },
   ];
   return (
-    <div className="w-60 min-h-screen bg-slate-800 text-slate-50  ">
+    <div className="w-60 min-h-screen hidden bg-slate-800 text-slate-50 fixed sm:block">
       {/*Top */}
       <div className="flex flex-col ">
         {/* Logo*/}

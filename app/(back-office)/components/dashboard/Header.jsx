@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  AlignJustify,
   Bell,
   ChevronDown,
   History,
@@ -14,16 +15,19 @@ export default function Header() {
   return (
     <div>
       <div className="bg-gray-100 h-12 flex items-center justify-between px-8 border-b border-slate-200 ">
+        <button className="sm:hidden">
+          <AlignJustify className="w-6 h-6" />
+        </button>
         <div className="flex gap-3">
           {/*Recent Activities*/}
-          <button>
+          <button className="hidden sm:block">
             <History className="w-6 h-6" />
           </button>
           {/*Search*/}
           <SearchInput />
         </div>
         <div className="flex ">
-          <div className="flex items-center gap-3">
+          <div className=" items-center gap-3 hidden sm:flex">
             {/*plus icon  */}
             <div className="pr-2 border-r border-gray-300">
               <button className="bg-blue-600 rounded-lg p-1">
@@ -44,25 +48,27 @@ export default function Header() {
           </div>
           {/*  */}
 
-          <div className="flex gap-3 ml-3">
+          <div className=" gap-3 ml-3 hidden sm:flex">
             <button className="flex items-center">
               <span>Claire</span>
               <ChevronDown className="w-4 h-3" />
             </button>
-            <button>
-              <Image
-                alt="userimage"
-                src="/user.svg"
-                width={96}
-                height={96}
-                className="w-8 h- rounded-full border border-slate-800"
-              />
-            </button>
+
             <button className="flex items-center">
               <LayoutGrid className="w-6 h-6 te-slate-900" />
             </button>
           </div>
+          <button>
+            <Image
+              alt="userimage"
+              src="/user.svg"
+              width={96}
+              height={96}
+              className="w-8 h- rounded-full border border-slate-800"
+            />
+          </button>
         </div>
+
         {/*  */}
       </div>
     </div>
