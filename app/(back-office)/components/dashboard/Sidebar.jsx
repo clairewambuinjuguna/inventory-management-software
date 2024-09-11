@@ -10,6 +10,7 @@ import {
   ShoppingBag,
   ShoppingBasket,
   ShoppingCart,
+  X,
 } from "lucide-react";
 import Link from "next/link";
 import React from "react";
@@ -18,7 +19,8 @@ import SubscriptionCard from "./SubscriptionCard";
 import CollapsibleLink from "./CollapsibleLink";
 import SidebarDropdownLink from "./SidebarDropdownLink";
 
-export default function Sidebar() {
+export default function Sidebar({ showSidebar,setShowSidebar }) {
+  console.log(showSidebar);
   const InventoryLinks = [
     {
       title: "All",
@@ -104,17 +106,31 @@ export default function Sidebar() {
     },
   ];
   return (
-    <div className="w-60 min-h-screen hidden bg-slate-800 text-slate-50 fixed sm:block">
+    <div
+      className={`${
+        showSidebar
+          ? "w-60 min-h-screen  bg-slate-800 text-slate-50 fixed lg:block z-50"
+          : "w-60 min-h-screen  bg-slate-800 text-slate-50 fixed hidden lg:block z-50"
+      }`}
+    >
       {/*Top */}
       <div className="flex flex-col ">
         {/* Logo*/}
-        <Link
-          href="#"
-          className=" bg-slate-950 flex space-x-2 items-center py-3 px-2"
-        >
-          <ShoppingCart />
-          <span className="font-semibold text-xl">Inventory</span>
-        </Link>
+        <div className="flex">
+          <Link
+            href="#"
+            className=" bg-slate-950 flex space-x-2 items-center py-3 px-2 w-full"
+          >
+            <ShoppingCart />
+            <span className="font-semibold text-xl">Inventory</span>
+          </Link>
+          <button
+            className="bg-slate-950 px-2 py-2 lg:hidden"
+            onClick={() => setShowSidebar(false)}
+          >
+            <X className="w-6 h-6 justify-between text-white " />
+          </button>
+        </div>
         {/* LINKS*/}
         <nav className="flex flex-col gap-3 px-3 py-6">
           <Link
@@ -128,6 +144,7 @@ export default function Sidebar() {
             title="Inventory"
             items={InventoryLinks}
             icon={BaggageClaim}
+            setShowSidebar={setShowSidebar}
           />
           <SidebarDropdownLink
             title="Sales"

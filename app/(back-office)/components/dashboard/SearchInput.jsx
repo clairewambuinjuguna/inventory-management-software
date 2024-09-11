@@ -4,7 +4,7 @@ import { Search } from "lucide-react";
 export default function SearchInput() {
   return (
     <div>
-      <form className="hidden sm:block">
+      <form className="hidden md:block">
         <label htmlFor="simple-search" className="sr-only">
           Search
         </label>
