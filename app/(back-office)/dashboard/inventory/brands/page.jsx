@@ -5,19 +5,16 @@ import React from "react";
 
 export default async function Brands() {
   const brands = await getData("brands");
- 
-  const columns = ["title"];
+
+  const columns = ["title", "createdAt", "updatedAt"];
   return (
     <div>
       {/*header*/}
-      <FixedHeader
-        title="Brands"
-        newLink="/dashboard/inventory/brands/new"
-      />
+      <FixedHeader title="Brands" newLink="/dashboard/inventory/brands/new" />
       {/*Form*/}
       {/* table */}
       <div className="my-4 p-8">
-        <DataTable data={brands} columns={columns} />
+        <DataTable data={brands} columns={columns} resourceTitle="brands" />
       </div>
     </div>
   );

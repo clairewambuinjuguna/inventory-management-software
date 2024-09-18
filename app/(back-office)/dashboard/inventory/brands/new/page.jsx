@@ -10,25 +10,48 @@ import { useState } from "react";
 import Submitbutton from "@/app/(back-office)/components/Forminputs/Submitbutton";
 import TextareaInput from "@/app/(back-office)/components/Forminputs/Textareainput";
 import toast from "react-hot-toast";
-import { makePostRequest } from "@/lib/apiRequest";
-export default function NewBrand() {
+import { makePostRequest, makePutRequest } from "@/lib/apiRequest";
+import { useRouter } from "next/navigation";
+export default function NewBrand({ initialData = {}, isUpdate = false }) {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: initialData,
+  });
   const [loading, setLoading] = useState(false);
+
+  function redirect() {
+    router.push("/dashboard/inventory/brands");
+  }
 
   async function onSubmit(data) {
     console.log(data);
-    makePostRequest(setLoading, "api/brands", data, "Brand", reset);
+    if (isUpdate) {
+      //Update request
+      makePutRequest(
+        setLoading,
+        `api/brands/${initialData.id}`,
+        data,
+        "Brand",
+        redirect,
+        reset
+      );
+    } else {
+      makePostRequest(setLoading, "api/brands", data, "Brand", reset);
+    }
   }
 
   return (
     <div>
       {/*header*/}
-      <FormHeader title="New Brand" href="/dashboard/inventory/brands" />
+      <FormHeader
+        title={isUpdate ? "Update Brand" : "New Brand"}
+        href="/dashboard/inventory/brands"
+      />
       {/*Form*/}
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -43,7 +66,10 @@ export default function NewBrand() {
             className="w-full"
           />
         </div>
-        <Submitbutton isLoading={loading} title="Brand" />
+        <Submitbutton
+          isLoading={loading}
+          title={isUpdate ? "Updated Brand" : "New Brand"}
+        />
       </form>
     </div>
   );
