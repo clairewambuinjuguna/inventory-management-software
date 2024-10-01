@@ -7,29 +7,49 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 
+
 import Submitbutton from "@/app/(back-office)/components/Forminputs/Submitbutton";
 import TextareaInput from "@/app/(back-office)/components/Forminputs/Textareainput";
 import toast from "react-hot-toast";
-import { makePostRequest } from "@/lib/apiRequest";
-export default function NewUnit() {
+import { makePostRequest, makePutRequest } from "@/lib/apiRequest";
+import { useRouter } from "next/navigation";
+export default function NewUnit({initialData={}, isUpdate=false}) {
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues:initialData
+  });
   const [loading, setLoading] = useState(false);
-
+ const router = useRouter()
+function redirect() {
+    router.replace("/dashboard/inventory/units");
+  }
   async function onSubmit(data) {
     console.log(data);
-
-    makePostRequest(setLoading, "api/units", data, "Unit", reset);
+if (isUpdate) {
+      //Update request
+      makePutRequest(
+        setLoading,
+        `api/units/${initialData.id}`,
+        data,
+        "Unit",
+        redirect,
+        reset
+      );
+    } else {
+      makePostRequest(setLoading, "api/units", data, "Unit", reset);
+    }
   }
+    
+  
 
   return (
     <div>
       {/*header*/}
-      <FormHeader title="New Unit" href="/dashboard/inventory/units" />
+      <FormHeader title={isUpdate?"Update Unit":"New Unit"} href="/dashboard/inventory/units" />
       {/*Form*/}
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -51,7 +71,7 @@ export default function NewUnit() {
             className="w-full"
           />
         </div>
-        <Submitbutton isLoading={loading} title="Unit" />
+        <Submitbutton isLoading={loading} title={isUpdate?"Updated Unit":"New Unit"} />
       </form>
     </div>
   );

@@ -14,7 +14,7 @@ export default async function Units() {
       {/*Form*/}
       {/* table */}
       <div className="my-4 p-8">
-        <DataTable data={units} columns={columns} />
+        <DataTable data={units} columns={columns} resourceTitle="units" />
       </div>
     </div>
   );

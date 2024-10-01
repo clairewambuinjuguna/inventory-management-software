@@ -12,6 +12,7 @@ import TextareaInput from "@/app/(back-office)/components/Forminputs/Textareainp
 import toast from "react-hot-toast";
 import { makePostRequest, makePutRequest } from "@/lib/apiRequest";
 import { useRouter } from "next/navigation";
+
 export default function NewBrand({ initialData = {}, isUpdate = false }) {
   const router = useRouter();
   const {
@@ -25,7 +26,7 @@ export default function NewBrand({ initialData = {}, isUpdate = false }) {
   const [loading, setLoading] = useState(false);
 
   function redirect() {
-    router.push("/dashboard/inventory/brands");
+    router.replace("/dashboard/inventory/brands");
   }
 
   async function onSubmit(data) {
