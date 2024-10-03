@@ -7,35 +7,37 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 
-
 import Submitbutton from "@/app/(back-office)/components/Forminputs/Submitbutton";
 import TextareaInput from "@/app/(back-office)/components/Forminputs/Textareainput";
 import toast from "react-hot-toast";
 import { makePostRequest, makePutRequest } from "@/lib/apiRequest";
 import { useRouter } from "next/navigation";
-export default function NewUnit({initialData={}, isUpdate=false}) {
+
+export default function NewUnit({ initialData = {}, isUpdate = false }) {
+  console.log(initialData);
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm({
-    defaultValues:initialData
+    defaultValues: initialData,
   });
   const [loading, setLoading] = useState(false);
- const router = useRouter()
-function redirect() {
+  const router = useRouter();
+
+  function redirect() {
     router.replace("/dashboard/inventory/units");
   }
   async function onSubmit(data) {
     console.log(data);
-if (isUpdate) {
+    if (isUpdate) {
       //Update request
       makePutRequest(
         setLoading,
         `api/units/${initialData.id}`,
         data,
-        "Unit",
+        "Updated Unit",
         redirect,
         reset
       );
@@ -43,13 +45,14 @@ if (isUpdate) {
       makePostRequest(setLoading, "api/units", data, "Unit", reset);
     }
   }
-    
-  
 
   return (
     <div>
       {/*header*/}
-      <FormHeader title={isUpdate?"Update Unit":"New Unit"} href="/dashboard/inventory/units" />
+      <FormHeader
+        title={isUpdate ? "Update Unit" : "New Unit"}
+        href="/dashboard/inventory/units"
+      />
       {/*Form*/}
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -71,7 +74,10 @@ if (isUpdate) {
             className="w-full"
           />
         </div>
-        <Submitbutton isLoading={loading} title={isUpdate?"Updated Unit":"New Unit"} />
+        <Submitbutton
+          isLoading={loading}
+          title={isUpdate ? "Updated Unit" : "New Unit"}
+        />
       </form>
     </div>
   );

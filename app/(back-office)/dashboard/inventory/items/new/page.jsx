@@ -3,8 +3,9 @@ import React from "react";
 import CreateItemForm from "@/app/(back-office)/components/dashboard/CreateItemForm";
 import { getData } from "@/lib/getData";
 
-export default async function NewItem() {
+export default async function NewItem({initialData={}, isUpdate = false}) {
   // sequential fetching =>use await
+  console.log(initialData);
   const categoriesData = getData("categories");
   const unitsData = getData("units");
   const brandsData = getData("brands");

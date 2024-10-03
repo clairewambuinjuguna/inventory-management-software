@@ -17,7 +17,7 @@ export default async function Categories() {
       {/*Form*/}
       {/* table */}
       <div className="my-4 p-8">
-        <DataTable data={categories} columns={columns} />
+        <DataTable data={categories} columns={columns} resourceTitle="categories" />
       </div>
     </div>
   );

@@ -10,25 +10,46 @@ import { useState } from "react";
 import Submitbutton from "@/app/(back-office)/components/Forminputs/Submitbutton";
 import TextareaInput from "@/app/(back-office)/components/Forminputs/Textareainput";
 import toast from "react-hot-toast";
-import { makePostRequest } from "@/lib/apiRequest";
-export default function NewCategory() {
+import { makePostRequest, makePutRequest } from "@/lib/apiRequest";
+import { useRouter } from "next/navigation";
+export default function NewCategory({ initialData = {}, isUpdate = false }) {
+   const router = useRouter();
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm({ defaultValues: initialData });
   const [loading, setLoading] = useState(false);
+
+  function redirect() {
+    router.replace("/dashboard/inventory/categories");
+  }
 
   async function onSubmit(data) {
     console.log(data);
+    if (isUpdate) {
+      //Update request
+      makePutRequest(
+        setLoading,
+        `api/categories/${initialData.id}`,
+        data,
+        "Updated Category",
+        redirect,
+        reset
+      );
+    } else {
       makePostRequest(setLoading, "api/categories", data, "Category", reset);
+    }
   }
 
   return (
     <div>
       {/*header*/}
-      <FormHeader title="New Category" href="/dashboard/inventory/categories" />
+      <FormHeader
+        title={isUpdate ? "Update Category" : "New Category"}
+        href="/dashboard/inventory/categories"
+      />
       {/*Form*/}
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -50,7 +71,10 @@ export default function NewCategory() {
             />
           </div>
         </div>
-        <Submitbutton isLoading={loading} title="Category" />
+        <Submitbutton
+          isLoading={loading}
+          title={isUpdate ? "Update Category" : "New Category"}
+        />
       </form>
     </div>
   );

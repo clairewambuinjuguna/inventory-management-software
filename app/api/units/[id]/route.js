@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(request, { params: { id } }) {
   try {
+    
     const unit = await db.unit.findUnique({
       where: {
         id,
@@ -22,21 +23,21 @@ export async function GET(request, { params: { id } }) {
 }
 export async function PUT(request, { params: { id } }) {
   try {
-    const { title } = await request.json();
-    const brand = await db.brand.update({
+    const { title, abbreviation } = await request.json();
+    const unit = await db.unit.update({
       where: {
         id},
-        data: { title },
+        data: { title,abbreviation },
       },
     );
-    console.log(brand)
-    return NextResponse.json(brand);
+    console.log(unit)
+    return NextResponse.json(unit);
   } catch (error) {
     console.log(error);
     return NextResponse.json(
       {
         error,
-        message: "Failed to Update the brand ",
+        message: "Failed to Update the unit ",
       },
       { status: 500 }
     );

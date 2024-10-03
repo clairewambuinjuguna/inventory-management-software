@@ -37,7 +37,7 @@ export default function NewBrand({ initialData = {}, isUpdate = false }) {
         setLoading,
         `api/brands/${initialData.id}`,
         data,
-        "Brand",
+        "Updated Brand",
         redirect,
         reset
       );

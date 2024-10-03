@@ -25,11 +25,11 @@ export async function PUT(request, { params: { id } }) {
     const { title } = await request.json();
     const brand = await db.brand.update({
       where: {
-        id},
-        data: { title },
+        id,
       },
-    );
-    console.log(brand)
+      data: { title },
+    });
+    console.log(brand);
     return NextResponse.json(brand);
   } catch (error) {
     console.log(error);
